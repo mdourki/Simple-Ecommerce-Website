@@ -1,0 +1,55 @@
+/* DHAINI AMINE && DOURKI MOHAMED 2APG2 */
+
+#content
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.article
+{
+  border : solid 1px black;
+  padding: 1% 6% 1% 6%;
+  margin: 2%;
+}
+.img_art
+{
+	width: 300px;
+	height: 500px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nom_art
+{
+	text-align: center;
+	margin: 2%;
+}
+.desc_art
+{
+	text-align: center;
+	margin: 2%;
+}
+.prix_art
+{
+	text-align: center;
+	background-color: black;
+	color: blanchedalmond;
+	margin: 2%;
+}
+
+.input_art{
+	margin: auto;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.btn_art{
+    width : 25px;
+	height : 25px;
+	background-size : cover;
+	border : solid 1px white;
+	background-image : url('../images/cmd.jpg');
+	vertical-align : top;
+}

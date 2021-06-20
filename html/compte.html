@@ -1,0 +1,154 @@
+<!-- DHAINI AMINE && DOURKI MOHAMED 2APG2 -->
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <title>D&D Compte </title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../scripts/data.js"></script>
+  </head>
+
+  <body onload="recuperationDonnee()">
+    <header> 
+      <img src="../images/logo.jpg" alt="logo" width="100px" height="100px">
+      <div id="connexion">
+        <button id="connect"> Connexion </button>
+      </div>
+    </header>   
+
+    <nav id="menu">
+      <ul>
+        <li> <a href="../index.html"> Home </a></li>
+        <li>
+          <a href="../html/articles.html">Articles </a>
+        </li> 
+        <li><a href="../html/panier.html">Panier </a></li> 
+        <li><a href="../html/contact.html">Contact </a></li> 
+        <li><a href="../html/inscription.html">Inscription </a></li>  
+      </ul>
+    </nav> 
+
+    <section id ="content">
+    </section>
+
+    <aside id="recherche">
+      <form id = "searchForm">
+				<label> Rechercher</label>
+				<input type="search" id="search" size="15"/>
+				<input type="button" value = "Ok" id="btnOK"/>
+			</form>
+      <div>
+        Les Articles les plus Recherche :
+      <ul>
+        <li>Rich Dad Poor Dad .by Robert T.Kiyosaki</li>
+        <li>The Subtle Art Of Not Giving A F*ck .by Mark Manson</li>
+        <li>Everything Is F*cked .by Mark Manson</li>
+        <li>Think And Grow Rich .by Napoleon Hill</li>
+        <li>The Richest Man In Babylon .by George S.Clason</li>
+        <li>The Intelligent Investor .by Benjamin Graham</li>
+        <li>The Power of Now .by Eckhart Tolle</li>
+        <li>The Power of Habit .by Charles Duhigg</li>
+      </ul>
+    </div>
+    </aside>
+
+    <footer>
+      <p>Dhaini & Dourki, 2AP, n°2, Local, 2020</p>
+    </footer>
+
+    <script>
+      function recuperationDonnee()
+      {
+        var content = document.getElementById("content");
+        //Création des éléments
+        var infosPers = document.createElement("div");
+        var title = document.createElement("h2");
+        var nom = document.createElement("p");
+        var prenom = document.createElement("p");
+        var email = document.createElement("p");
+        var tel = document.createElement("p");
+        var pwd = document.createElement("p");
+
+        // Récupérer les données stockées en local
+			  title.innerText = "Informations : ";             
+			  nom.innerText = "Nom : " + localStorage.getItem("nom");
+			  prenom.innerText = "Prénom : " + localStorage.getItem("prenom");
+			  email.innerText = "Adresse email : " + localStorage.getItem("email");
+			  tel.innerText = "Numéro de télephone : " + localStorage.getItem("tel");
+        pwd.innerText = "Mot de passe : " + localStorage.getItem("pwd");
+        
+        //Associer des classes aux éléments
+        infosPers.className = "infosPers";
+        title.className = "title";
+        nom.className = "nom";
+        prenom.className = "prenom";
+        email.className = "email";
+        tel.className = "tel";
+        pwd.className = "pwd";
+
+        //Insertion des données comme enfants de l'élément "div" infosPers
+        infosPers.appendChild(title);
+        infosPers.appendChild(nom);
+        infosPers.appendChild(prenom);
+        infosPers.appendChild(email);
+        infosPers.appendChild(tel);
+        infosPers.appendChild(pwd);
+
+        //Inserer l'élément infosPers comme enfant de l'élément content
+        content.appendChild(infosPers);
+      }
+    </script>
+
+  </body>
+
+  <script>
+    
+    var btnOK = document.getElementById("btnOK");
+      var searchForm = document.getElementById("searchForm");
+      
+      function searchArticle(nom)
+      {
+          for(var i = 0; i < catalogue.length ; i++)
+          {
+              if(catalogue[i].nom == nom)
+              {
+                  return true;
+              }           
+        }
+        return false;
+      }
+
+      btnOK.onclick = function(){
+
+          var searchBar = document.getElementById("search").value;
+        if(searchArticle(searchBar))
+          {
+              window.open("../html/articlesInfo.html");
+          }
+
+        else
+          {
+              alert("Cet article n'existe pas dans notre boutique");
+        }
+      }
+
+      searchForm.onsubmit = function(){
+
+          var searchBar = document.getElementById("search").value;
+          if(searchArticle(searchBar))
+          {
+            window.open("../html/articlesInfo.html");
+          }
+
+          else
+          {
+              alert("Cet article n'existe pas dans notre boutique");
+          }
+      }
+
+  </script>
+
+ </html>

@@ -1,0 +1,181 @@
+<!-- DHAINI AMINE && DOURKI MOHAMED 2APG2 -->
+
+<!DOCTYPE html>
+
+<html>
+  
+    <head> 
+        <meta charset="utf-8"/>
+		<title>D&D Inscrivez-vous </title>
+		<link rel="stylesheet" href="../style/style.css">
+		<script src="../scripts/data.js"></script>
+    </head>
+
+	<body>
+        <header>
+			<img src="../images/logo.jpg" alt="logo" width="100px" height="100px">
+			<div id="connexion">
+				<button id="connect"> Connexion </button>
+			</div>
+        </header>
+
+		<nav id="menu">
+            <ul>
+				<li> <a href="../index.html"> Home </a></li>
+				<li>
+				  <a href="../html/articles.html">Articles </a>
+				</li> 
+				<li><a href="../html/panier.html">Panier </a></li> 
+				<li><a href="../html/contact.html">Contact </a></li> 
+				<li><a href="../html/inscription.html">Inscription </a></li>  
+			  </ul>
+        </nav> 
+
+		<section id ="content">
+            <form  id="inscription" method="post">
+	            <fieldset>
+	                <legend> 1 </legend>
+	                <label for="nom"> Nom 
+						<input type="text" name="nom" id="nom" />
+				    </label>
+					<label for="prenom"> Prénom 
+						<input type="text" name="prenom" id="prenom" />
+				    </label>
+	            </fieldset>
+	
+			    <fieldset>
+	                <legend>  2 Email et téléphone </legend>
+	                <label for="email"> Email 
+						<input type="email" name="email" id="email" />
+					</label>
+	                <label for="tel"> Tél 
+						<input type="tel" name="tel" id="tel" />
+					</label>
+                </fieldset>
+	
+			    <fieldset>
+                    <legend> 3 Mot de Passe </legend>	
+	                <label for="pwd"> Mot de passe 
+					    <input type="password" name="pwd" id="pwd" />
+				    </label>
+	                <label for="pwd"> Confirmez le mot de passe 
+					    <input type="password" name="pwdcopy" id="pwdcopy" />
+				    </label>
+	        	</fieldset>
+	
+				<fieldset>
+	            	<input type="submit" value="Inscription" id="btnIns"/>
+	        	</fieldset>
+	    	</form> 
+		</section>
+
+		<aside id="recherche">
+            <form id = "searchForm">
+				<label> Rechercher</label>
+				<input type="search" id="search" size="15"/>
+				<input type="button" value = "Ok" id="btnOK"/>
+			</form>
+			<div>
+				Les Articles les plus Recherche :
+			  <ul>
+				<li>Rich Dad Poor Dad .by Robert T.Kiyosaki</li>
+				<li>The Subtle Art Of Not Giving A F*ck .by Mark Manson</li>
+				<li>Everything Is F*cked .by Mark Manson</li>
+				<li>Think And Grow Rich .by Napoleon Hill</li>
+				<li>The Richest Man In Babylon .by George S.Clason</li>
+				<li>The Intelligent Investor .by Benjamin Graham</li>
+				<li>The Power of Now .by Eckhart Tolle</li>
+				<li>The Power of Habit .by Charles Duhigg</li>
+			  </ul>
+			</div>
+		</aside>
+
+		<footer>
+			<p>Dhaini & Dourki, 2AP, n°2, Local, 2020</p>
+		</footer>
+	</body>
+
+	<script>
+		var myForm = document.getElementById("inscription");
+		
+		myForm.onsubmit = function(){  //  on gère  l'évènement submit
+		    // Récupèrer les données
+		    var nom = document.getElementById("nom").value;       // Récupèrer le nom  
+		    var prenom = document.getElementById("prenom").value; // Récupèrer le prénom
+			var email = document.getElementById("email").value; // Récupèrer l'adresse mail
+			var tel = document.getElementById("tel").value; // Récupèrer le numéro de téléphone
+			var pwd = document.getElementById("pwd").value; // Récupèrer le mot de passe
+			var pwdcopy = document.getElementById("pwdcopy").value; // Récupèrer le mot de passe confirmé
+			// Stocker les données en local
+			localStorage.setItem("nom",nom);                    
+			localStorage.setItem("prenom",prenom);
+			localStorage.setItem("email",email);
+			localStorage.setItem("tel",tel);
+			localStorage.setItem("pwd",pwd);
+			localStorage.setItem("pwdcopy",pwdcopy);
+
+			
+			if(pwdcopy != pwd)
+			{
+				alert("Les deux mots de passe doivent être pareilles");
+			}
+			else
+			{
+				window.open("compte.html");
+			}
+		}  
+		
+		
+		
+    
+        
+	</script>
+
+    <script>
+    
+	    var btnOK = document.getElementById("btnOK");
+        var searchForm = document.getElementById("searchForm");
+        
+        function searchArticle(nom)
+        {
+            for(var i = 0; i < catalogue.length ; i++)
+            {
+                if(catalogue[i].nom == nom)
+                {
+                    return true;
+                }           
+	        }
+	        return false;
+        }
+
+        btnOK.onclick = function(){
+
+            var searchBar = document.getElementById("search").value;
+	        if(searchArticle(searchBar))
+            {
+                window.open("../html/articlesInfo.html");
+            }
+	
+	        else
+            {
+                alert("Cet article n'existe pas dans notre boutique");
+	        }
+        }
+
+        searchForm.onsubmit = function(){
+
+            var searchBar = document.getElementById("search").value;
+            if(searchArticle(searchBar))
+            {
+	            window.open("../html/articlesInfo.html");
+            }
+
+            else
+            {
+                alert("Cet article n'existe pas dans notre boutique");
+            }
+        }
+	
+    </script>
+
+</html>
